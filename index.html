@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekstil Atıkları ve Çevre Sorunları</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B9556 0%, #6B7339 100%);
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6B7339;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: rgba(107, 115, 57, 0.9);
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .welcome-section {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 2rem auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1200&h=500&fit=crop') center/cover;
+            filter: blur(8px) brightness(0.7);
+            z-index: 1;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .welcome-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #F5F5DC;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            background: white;
+            margin: 2rem auto;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            background: white;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #6B7339;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-left: 5px solid #8B9556;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            color: #5A5F31;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #8B9556 0%, #6B7339 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            font-size: 0.95rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .image-caption {
+            transform: translateY(0);
+        }
+
+        .problem-list {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .problem-item {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #8B9556;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .problem-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .solution-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            border-color: #8B9556;
+        }
+
+        .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B9556 0%, #6B7339 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 1rem 0.5rem;
+            box-shadow: 0 4px 10px rgba(107, 115, 57, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(107, 115, 57, 0.5);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #8B9556;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid, .solution-grid, .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 2.5rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .gallery-item img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌍 Tekstil Atıkları ve Çevre</h1>
+            <p class="subtitle">Moda Endüstrisinin Gizli Maliyeti</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#welcome">Ana Sayfa</a></li>
+            <li><a href="#problem">Sorun</a></li>
+            <li><a href="#statistics">İstatistikler</a></li>
+            <li><a href="#effects">Çevresel Etkiler</a></li>
+            <li><a href="#solutions">Çözümler</a></li>
+            <li><a href="#action">Harekete Geç</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="welcome" class="welcome-section">
+            <div class="welcome-content">
+                <h1 class="welcome-title">HOŞ GELDİNİZ</h1>
+                <p class="welcome-subtitle">Tekstil Atıkları ve Sürdürülebilir Gelecek</p>
+            </div>
+        </section>
+
+        <section class="hero">
+            <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=1200&h=400&fit=crop&q=80" alt="Tekstil Atıkları Yığını" class="hero-image">
+            <h2>Tekstil Atıkları Krizi</h2>
+            <p style="font-size: 1.2rem; color: #555; line-height: 1.8;">Tekstil endüstrisi, dünyanın en kirletici sektörlerinden biridir. Her yıl milyonlarca ton tekstil atığı üretiliyor ve bunların çoğu çöplüklerde son buluyor. Bu sayfa, tekstil atıklarının çevresel etkilerini ve alabileceğimiz önlemleri açıklamaktadır.</p>
+        </section>
+
+        <section id="statistics" class="section">
+            <h2>📊 Şok Edici İstatistikler</h2>
+            
+            <div class="info-box">
+                <p><strong>💡 Biliyor muydunuz?</strong> Her saniye bir kamyon dolusu tekstil çöplüğe atılıyor veya yakılıyor!</p>
+            </div>
+
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1528459199957-0ff28496a7f6?w=600&h=400&fit=crop&q=80" alt="Tekstil Fabrikası">
+                    <div class="image-caption">📍 Tekstil üretim süreçleri ve çevresel etkiler</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=400&fit=crop&q=80" alt="Mağaza Rafları">
+                    <div class="image-caption">📍 Aşırı üretim ve tüketim kültürü</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop&q=80" alt="Kıyafet Alışverişi">
+                    <div class="image-caption">📍 Hızlı moda ve tüketim alışkanlıkları</div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">92M</div>
+                    <div class="stat-label">Ton tekstil atığı/yıl</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">%85</div>
+                    <div class="stat-label">Çöplükte son bulan tekstil</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,700L</div>
+                    <div class="stat-label">Bir tişört için su</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">%20</div>
+                    <div class="stat-label">Küresel su kirliliğinden sorumlu</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="section">
+            <h2>⚠️ Tekstil Atıklarının Neden Olduğu Sorunlar</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop&q=80" alt="Çöplükteki Tekstil Atıkları">
+                    <div class="image-caption">📍 Çöplüklerde biriken milyonlarca ton tekstil atığı</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&q=80" alt="Hızlı Moda">
+                    <div class="image-caption">📍 Hızlı moda endüstrisi ve aşırı tüketim</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600&h=400&fit=crop&q=80" alt="Su Kirliliği">
+                    <div class="image-caption">📍 Tekstil üretiminin su kaynaklarına etkisi</div>
+                </div>
+            </div>
+
+            <div class="problem-list">
+                <div class="problem-item">
+                    <h3>🌊 Su Kirliliği</h3>
+                    <p>Tekstil üretimi sırasında kullanılan boyalar ve kimyasallar su kaynaklarını kirletir. Sentetik kumaşların yıkanması sırasında mikroplastikler okyanuslara karışır ve deniz ekosistemini tehdit eder.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>🏭 Hava Kirliliği</h3>
+                    <p>Tekstil üretimi ve atıkların yakılması atmosfere zararlı gazlar salar. Karbon emisyonları iklim değişikliğine katkıda bulunur ve hava kalitesini düşürür.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>🗑️ Çöplük Krizi</h3>
+                    <p>Sentetik kumaşların çürümesi yüzlerce yıl alır. Çöplükler hızla tekstil atıklarıyla doluyor ve bu atıklar toprağa zararlı maddeler sızdırıyor.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>🌱 Toprak Kirliliği</h3>
+                    <p>Tekstil atıklarından sızan kimyasallar toprağı kirletir ve tarım arazilerini kullanılamaz hale getirir. Bu durum gıda güvenliğini de tehdit ediyor.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>💧 Su Tüketimi</h3>
+                    <p>Pamuk üretimi devasa miktarda su tüketir. Bir kot pantolon için yaklaşık 7,500 litre su harcanıyor. Su kıtlığı yaşayan bölgelerde bu durum ciddi sorunlara yol açar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="effects" class="section">
+            <h2>🌍 Çevresel ve Sosyal Etkiler</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=600&h=400&fit=crop&q=80" alt="Çevre Kirliliği">
+                    <div class="image-caption">📍 Tekstil atıklarının doğaya verdiği zarar</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da4?w=600&h=400&fit=crop&q=80" alt="Kirli Sular">
+                    <div class="image-caption">📍 Boyama işlemlerinden kaynaklanan su kirliliği</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=600&h=400&fit=crop&q=80" alt="Çevre Koruma">
+                    <div class="image-caption">📍 Çevre koruma ve farkındalık çalışmaları</div>
+                </div>
+            </div>
+            
+            <h3>🐠 Ekosistem Üzerindeki Etkiler</h3>
+            <p>Tekstil atıkları ve üretim süreçleri ekosistemlere zarar verir. Mikroplastikler deniz canlılarının sindirim sistemine girer ve besin zincirine karışır. Kimyasal atıklar su kaynaklarını zehirleyerek balık ve diğer su canlılarının ölümüne neden olur.</p>
+            
+            <h3>🌡️ İklim Değişikliği</h3>
+            <p>Tekstil endüstrisi küresel karbon emisyonlarının %10'undan sorumludur. Bu oran, tüm uluslararası uçuşların ve deniz taşımacılığının toplam emisyonundan fazladır. Endüstri sera gazı salınımını azaltmak için acil önlemler almalıdır.</p>
+            
+            <h3>👥 İnsan Sağlığı</h3>
+            <p>Tekstil üretiminde kullanılan kimyasallar işçilerin ve yakın bölgelerde yaşayan halkın sağlığını tehdit eder. Su kaynaklarının kirlenmesi içme suyu sorunlarına yol açar ve toplum sağlığını olumsuz etkiler.</p>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1573855619003-97b4799dcd8b?w=600&h=400&fit=crop&q=80" alt="Deniz Kirliliği">
+                    <div class="image-caption">📍 Mikroplastiklerin deniz ekosistemlerine etkisi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?w=600&h=400&fit=crop&q=80" alt="Tekstil İşçileri">
+                    <div class="image-caption">📍 Tekstil endüstrisinde çalışan işçiler</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="section">
+            <h2>✅ Çözüm Önerileri</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=600&h=400&fit=crop&q=80" alt="Geri Dönüşüm">
+                    <div class="image-caption">📍 Tekstil geri dönüşümü ile sürdürülebilir gelecek</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=400&fit=crop&q=80" alt="Vintage Alışveriş">
+                    <div class="image-caption">📍 İkinci el ve vintage kıyafet alışverişi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&h=400&fit=crop&q=80" alt="Sürdürülebilir Moda">
+                    <div class="image-caption">📍 Organik ve sürdürülebilir kumaşlar</div>
+                </div>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">♻️</div>
+                    <h3>Geri Dönüşüm</h3>
+                    <p>Tekstil atıklarının geri dönüştürülmesi. Eski kıyafetlerin yeni ürünlere dönüştürülmesi ve kaynakların verimli kullanılması.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🛍️</div>
+                    <h3>Bilinçli Tüketim</h3>
+                    <p>Kaliteli ve uzun ömürlü ürünler satın almak. Hızlı modadan uzak durmak ve gerçekten ihtiyacınız olanı almak.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🌿</div>
+                    <h3>Sürdürülebilir Moda</h3>
+                    <p>Organik ve çevre dostu kumaşlar kullanmak. Yerel ve etik üretim yapan markaları desteklemek.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🤝</div>
+                    <h3>Bağış ve Paylaşım</h3>
+                    <p>Kullanılmayan kıyafetleri ihtiyaç sahiplerine bağışlamak. İkinci el alışverişi tercih etmek ve paylaşım ekonomisini desteklemek.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🔧</div>
+                    <h3>Onarım</h3>
+                    <p>Yırtık veya bozuk kıyafetleri atmak yerine tamir etmek. Dikişçilere destek vererek yerel ekonomiyi güçlendirmek.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🎨</div>
+                    <h3>Upcycling</h3>
+                    <p>Eski kıyafetleri yaratıcı projelerle yeni ürünlere dönüştürmek. DIY projeleriyle benzersiz parçalar oluşturmak.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="action" class="section" style="text-align: center;">
+            <h2>💪 Bugün Harekete Geç!</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop&q=80" alt="Gönüllüler">
+                    <div class="image-caption">📍 Birlikte yapabileceğimiz çok şey var</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&h=400&fit=crop&q=80" alt="Yeniden Kullanım">
+                    <div class="image-caption">📍 Eski kıyafetlere yeni hayat ver</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop&q=80" alt="Yeşil Dünya">
+                    <div class="image-caption">📍 Gelecek nesiller için temiz bir dünya</div>
+                </div>
+            </div>
+            
+            <div class="info-box" style="max-width: 800px; margin: 2rem auto;">
+                <p style="font-size: 1.1rem;"><strong>🌟 Her Adım Önemli!</strong> Bugün attığınız küçük adımlar, yarının büyük değişimlerinin başlangıcıdır. Gelin birlikte daha sürdürülebilir bir gelecek inşa edelim.</p>
+            </div>
+            
+            <p style="font-size: 1.2rem; margin: 2rem 0; font-weight: 600;">Herkes bu soruna çözüm olabilir. Küçük adımlar büyük değişimler yaratır.</p>
+            <div>
+                <a href="#" class="cta-button">🎁 Kıyafetlerini Bağışla</a>
+                <a href="#" class="cta-button">🌱 Sürdürülebilir Markalar Keşfet</a>
+                <a href="#" class="cta-button">📢 Bilgi Paylaş</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.3rem; font-style: italic; color: #6B7339; margin-bottom: 1.5rem; font-weight: 500;">
+                "Bir tişörte 2,700 litre su harcanıyor. Peki biz neyi harcıyoruz?" 💧
+            </p>
+            <p><strong>🌍 Birlikte Daha Sürdürülebilir Bir Gelecek İnşa Edebiliriz</strong></p>
+            <p style="margin-top: 1rem;">© 2025 Tekstil Atıkları Farkındalık Projesi | Çevre için birlikte hareket edelim 🌿</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Her gün bilinçli seçimler yaparak dünyamızı koruyalım</p>
+        </div
